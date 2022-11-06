@@ -1,0 +1,31 @@
+$color-primary: #FF0101;
+$color-secondary: #282D30;
+$color-black: #020203;
+$color-white: #FFFFFF;
+
+$margins: (
+    xsmall: .5rem,
+    small: 1rem,
+    med: 1.5rem,
+    large: 2rem,
+    xlarge: 3rem,
+    xxlarge: 5rem
+);
+
+$radius: (
+    element: 5px,
+    icon: 6px,
+    circle: 50%
+);
+
+$font-w-normal: 400;
+$font-w-medium: 500;
+$font-w-semibold: 600;
+$font-w-bold: 700;
+
+$breakpoints: (
+    tablet: 768px,
+    laptop: 1024px,
+    desktop-med: 1280px,
+    desktop-large: 1600px
+);
