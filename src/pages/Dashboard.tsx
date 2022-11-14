@@ -7,10 +7,10 @@ import {
   TUserForHomePage,
   TUserActivityForHomePage,
   TUserActivity,
-  TSessions
+  //TSessions
 } from 'types/dataUser.types'
 import {
-  formatActivityForHomepage,
+  //formatActivityForHomepage,
   formatUserForHomepage,
 } from 'formatters/user_formatter'
 import {ActivityChart} from 'components/ActivityChart/ActivityChart'

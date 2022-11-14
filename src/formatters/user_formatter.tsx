@@ -1,7 +1,7 @@
 import {
   TUserData,
   TUserForHomePage,
-  TUserActivity,
+  //TUserActivity,
   TUserActivityForHomePage,
   TSessions
 } from 'types/dataUser.types'
