@@ -17,6 +17,9 @@ type ActivityProps = {
 }
 
 export function ActivityChart({ activityData }: ActivityProps) {
+  const formatDay = (day: string) =>
+    day.toString().indexOf('-') !== -1 ? day.split('-')[2] : day
+
   return (
     <div className={styles.grid}>
       <ResponsiveContainer width="100%" height={320}>
@@ -32,6 +35,7 @@ export function ActivityChart({ activityData }: ActivityProps) {
             tickLine={false}
             stroke="#9B9EAC"
             dy={10}
+            tickFormatter={formatDay}
           />
           <YAxis
             axisLine={false}

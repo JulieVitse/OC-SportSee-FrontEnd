@@ -34,6 +34,7 @@ export async function formatActivityForHomepage(
 ): Promise<TUserActivityForHomePage[]> {
   const sessions = userActivity.sessions.map((session) => {
     const { day, kilogram, calories } = session
+
     return { day, kilogram, calories }
   })
 
@@ -41,6 +42,8 @@ export async function formatActivityForHomepage(
 }
 
 console.log(formatActivityForHomepage(userActivity[0])) 
+
+//const formatDay = (day: string) => (day.indexOf('-') !== -1 ? day.split('-')[2] : day)
 
 /* export async function formatActivityForHomepage(
   userActivity: TUserActivity[]
