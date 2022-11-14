@@ -1,26 +1,46 @@
 import { useEffect, useState } from 'react'
 import styles from './Dashboard.module.scss'
 import { useParams } from 'react-router-dom'
-import getUserData from 'api/userData'
-import { TUserData, TUserInfos /* TKeyData */ } from 'types/dataUser.types'
+import { getUserData, getUserActivity } from 'api/userData'
+import {
+  TUserData,
+  TUserForHomePage,
+  TUserActivityForHomePage,
+  TUserActivity,
+  TSessions
+} from 'types/dataUser.types'
+import {
+  formatActivityForHomepage,
+  formatUserForHomepage,
+} from 'formatters/user_formatter'
+import {ActivityChart} from 'components/ActivityChart/ActivityChart'
+
+//import { getUserData } from '_mocks_/userData'
 
 function Dashboard() {
   const { id } = useParams<string>()
-  const [user, setUser] = useState<TUserInfos>()
+  const [user, setUser] = useState<TUserForHomePage>()
+  const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
 
   useEffect(() => {
     const getData = async (id: string) => {
       try {
         const userData: TUserData = await getUserData(id)
-
-        setUser(userData.userInfos)
+        setUser(await formatUserForHomepage(userData))
+        /* const {calorieCount, proteinCount} = await formatUserForHomepage(userData)
+        setUserFirstName(firstName) */
+        //setUser(userData.userInfos)
+        const userActivity: TUserActivity = await getUserActivity(id)
+        setActivity(userActivity.sessions)
+        //setActivity(await formatActivityForHomepage(userActivity))
+        //console.log(userActivity.sessions)
       } catch (err: any) {
         console.log('Error:', err)
       }
     }
     getData(id!)
   }, [id])
-
+ 
   return user ? (
     <main className={styles.main}>
       <section className={styles.dashboard}>
@@ -33,6 +53,8 @@ function Dashboard() {
         <p className={styles.dashboard__subtitle}>
           Félicitations ! Vous avez explosé vos objectifs hier 👏
         </p>
+
+        <ActivityChart activityData={activity!} />
       </section>
     </main>
   ) : (

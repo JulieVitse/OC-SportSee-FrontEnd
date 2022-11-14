@@ -1,19 +1,25 @@
 import axios from 'axios'
-import { User } from 'formatters/user_formatter'
-import { TUserData } from 'types/dataUser.types'
 
-async function getUserData (id: string): Promise<TUserData> {
-    let data: TUserData
-    const apiData = await axios
-    .get(`http://localhost:3000/user/${id}`)
-    .then((response) => {
-        data = response.data.data
-        return data
-    })
-    .catch((error) => {
-      throw new Error('Error:', error)
-    })
-    return new User(apiData)
+//import { TUserData } from 'types/dataUser.types'
+
+export async function getUserData(id: string): Promise<any> {
+  try {
+    const {
+      data: { data },
+    } = await axios.get(`http://localhost:3000/user/${id}`)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-export default getUserData
+export async function getUserActivity(id: string): Promise<any> {
+  try {
+    const {
+      data: { data },
+    } = await axios.get(`http://localhost:3000/user/${id}/activity`)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}

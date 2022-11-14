@@ -1,44 +1,53 @@
-import { TUserData, TUserInfos, TKeyData } from 'types/dataUser.types'
+import {
+  TUserData,
+  TUserForHomePage,
+  TUserActivity,
+  TUserActivityForHomePage,
+  TSessions
+} from 'types/dataUser.types'
+import { userActivity } from '_mocks_/store'
 
-export class User {
-  id: number
-  userInfos: TUserInfos
-  firstName: string
-  lastName: string
-  age: number
-  todayScore: number
-  keyData: TKeyData
-  calorieCount: number
-  proteinCount: number
-  carbohydrateCount: number
-  lipidCount: number
-  score: number
-  constructor(data: TUserData) {
-    this.id = data.id
-    this.userInfos = data.userInfos
-    this.firstName = data.userInfos.firstName
-    this.lastName = data.userInfos.lastName
-    this.age = data.userInfos.age
-    this.todayScore = data.todayScore
-    this.score = data.score
-    this.keyData = data.keyData
-    this.calorieCount = data.keyData.calorieCount
-    this.proteinCount = data.keyData.proteinCount
-    this.carbohydrateCount = data.keyData.carbohydrateCount
-    this.lipidCount = data.keyData.lipidCount
+export async function formatUserForHomepage(
+  User: TUserData
+): Promise<TUserForHomePage> {
+  const {
+    keyData: { calorieCount, proteinCount, carbohydrateCount, lipidCount },
+    userInfos: { firstName },
+    score,
+    todayScore,
+  } = User
+  /*  const todayScore = score * 10
+  return {todayScore, ...User} */
+  return {
+    calorieCount,
+    proteinCount,
+    carbohydrateCount,
+    lipidCount,
+    firstName,
+    score,
+    todayScore,
   }
-  /* static getNewUser(userData: TUserData) {
-        const { id, userInfos, todayScore, keyData } = userData.data
-        const user = new User()
-        user.id = id
-        user.firstName = userInfos.firstName
-        user.lastName = userInfos.lastName
-        user.age = userInfos.age
-        user.todayScore = todayScore
-        user.calorieCount = keyData.calorieCount
-        user.proteinCount = keyData.proteinCount
-        user.carbohydrateCount = keyData.carbohydrateCount
-        user.lipidCount = keyData.lipidCount
-        return user
-    } */
 }
+
+export async function formatActivityForHomepage(
+  userActivity: TSessions[]
+): Promise<TUserActivityForHomePage> {
+  const [{
+    day, kilogram, calories
+  }] = userActivity
+
+  return { day, kilogram, calories } 
+
+}
+
+console.log(formatActivityForHomepage(userActivity[1].sessions))
+
+/* export async function formatActivityForHomepage(
+  userActivity: TUserActivity
+) : Promise<TUserActivityForHomePage> {
+  const { sessions } = userActivity
+  const [{ day, kilogram, calories }] = sessions
+  return { day, kilogram, calories }
+}
+
+console.log(formatActivityForHomepage(userActivity[1])) */

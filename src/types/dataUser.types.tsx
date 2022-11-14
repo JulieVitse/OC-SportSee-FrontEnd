@@ -1,23 +1,3 @@
-/* export type TUserData = {
-  data: {
-    id: number
-    userInfos: {
-      firstName: string
-      lastName: string
-      age: number
-    }
-    todayScore: number
-    keyData: {
-      calorieCount: number
-      proteinCount: number
-      carbohydrateCount: number
-      lipidCount: number
-    }
-  }
-}
- */
-
-
 export type TUserData = {
   id: number
   userInfos: TUserInfos
@@ -37,4 +17,35 @@ export type TKeyData = {
   proteinCount: number
   carbohydrateCount: number
   lipidCount: number
+}
+
+export type TUserForHomePage = {
+  calorieCount: number
+  proteinCount: number
+  carbohydrateCount: number
+  lipidCount: number
+  firstName: string
+  score: number
+  todayScore: number
+}
+
+export type TUserActivity = {
+  userId: number,
+  sessions: TSessions[]
+}
+
+export type TSessions = {
+  day: string,
+  kilogram: number,
+  calories: number
+}
+
+
+
+
+
+export type TUserActivityForHomePage = {
+  day: string,
+  kilogram: number,
+  calories: number
 }

@@ -1,8 +1,8 @@
-export const userData = [
+export const userData =
   {
     id: 18,
     userInfos: {
-      firstName: 'Cecilia',
+      firstName: 'Julie',
       lastName: 'Ratorez',
       age: 34,
     },
@@ -13,23 +13,8 @@ export const userData = [
       carbohydrateCount: 150,
       lipidCount: 120,
     },
-  },
-  {
-    id: 12,
-    userInfos: {
-      firstName: 'Karl',
-      lastName: 'Dovineau',
-      age: 31,
-    },
-    todayScore: 0.12,
-    keyData: {
-      calorieCount: 1930,
-      proteinCount: 155,
-      carbohydrateCount: 290,
-      lipidCount: 50,
-    },
-  },
-]
+  }
+
 
 export const userActivity = [
   {
