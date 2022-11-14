@@ -10,7 +10,7 @@ import {
   //TSessions
 } from 'types/dataUser.types'
 import {
-  //formatActivityForHomepage,
+  formatActivityForHomepage,
   formatUserForHomepage,
 } from 'formatters/user_formatter'
 import {ActivityChart} from 'components/ActivityChart/ActivityChart'
@@ -31,8 +31,9 @@ function Dashboard() {
         setUserFirstName(firstName) */
         //setUser(userData.userInfos)
         const userActivity: TUserActivity = await getUserActivity(id)
-        setActivity(userActivity.sessions)
-        //setActivity(await formatActivityForHomepage(userActivity))
+        // ! setActivity(userActivity.sessions)
+        //console.log(userActivity)
+        setActivity(await formatActivityForHomepage(userActivity))
         //console.log(userActivity.sessions)
       } catch (err: any) {
         console.log('Error:', err)

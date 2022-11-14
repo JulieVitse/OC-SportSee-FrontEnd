@@ -1,9 +1,9 @@
 import {
   TUserData,
   TUserForHomePage,
-  //TUserActivity,
+  TUserActivity,
   TUserActivityForHomePage,
-  TSessions
+  //TSessions
 } from 'types/dataUser.types'
 import { userActivity } from '_mocks_/store'
 
@@ -30,24 +30,24 @@ export async function formatUserForHomepage(
 }
 
 export async function formatActivityForHomepage(
-  userActivity: TSessions[]
-): Promise<TUserActivityForHomePage> {
-  const [{
-    day, kilogram, calories
-  }] = userActivity
+  userActivity: TUserActivity
+): Promise<TUserActivityForHomePage[]> {
+  const sessions = userActivity.sessions.map((session) => {
+    const { day, kilogram, calories } = session
+    return { day, kilogram, calories }
+  })
 
-  return { day, kilogram, calories } 
-
+  return sessions
 }
 
-console.log(formatActivityForHomepage(userActivity[1].sessions))
+console.log(formatActivityForHomepage(userActivity[0])) 
 
 /* export async function formatActivityForHomepage(
-  userActivity: TUserActivity
-) : Promise<TUserActivityForHomePage> {
-  const { sessions } = userActivity
+  userActivity: TUserActivity[]
+) : Promise<TUserActivityForHomePage[]> {
+  const [{ sessions }] = userActivity
   const [{ day, kilogram, calories }] = sessions
-  return { day, kilogram, calories }
+  return [{ day, kilogram, calories }]
 }
 
-console.log(formatActivityForHomepage(userActivity[1])) */
+console.log(formatActivityForHomepage(userActivity)) */
