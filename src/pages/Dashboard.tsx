@@ -8,7 +8,7 @@ import {
   TUserActivityForHomePage,
   TUserActivity,
   //TSessions
-} from 'types/dataUser.types'
+} from 'types/apiData.types'
 import {
   formatActivityForHomepage,
   formatUserForHomepage,
@@ -31,7 +31,7 @@ function Dashboard() {
         setUserFirstName(firstName) */
         //setUser(userData.userInfos)
         const userActivity: TUserActivity = await getUserActivity(id)
-        // ! setActivity(userActivity.sessions)
+        // setActivity(userActivity.sessions)
         //console.log(userActivity)
         setActivity(await formatActivityForHomepage(userActivity))
         //console.log(userActivity.sessions)

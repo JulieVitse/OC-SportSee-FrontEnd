@@ -4,8 +4,8 @@ import {
   TUserActivity,
   TUserActivityForHomePage,
   //TSessions
-} from 'types/dataUser.types'
-import { userActivity } from '_mocks_/store'
+} from 'types/apiData.types'
+//import { userActivity } from '_mocks_/store'
 
 export async function formatUserForHomepage(
   User: TUserData
@@ -34,23 +34,13 @@ export async function formatActivityForHomepage(
 ): Promise<TUserActivityForHomePage[]> {
   const sessions = userActivity.sessions.map((session) => {
     const { day, kilogram, calories } = session
-
-    return { day, kilogram, calories }
+    
+    // formats date to return only the day
+    const [ dayNumber ] = day.split('-').slice(-1)
+    // removes the 0 in front of the day number
+    const dayToNumber = dayNumber.substring(1)
+    return { day: dayToNumber, kilogram, calories }
   })
 
   return sessions
 }
-
-console.log(formatActivityForHomepage(userActivity[0])) 
-
-//const formatDay = (day: string) => (day.indexOf('-') !== -1 ? day.split('-')[2] : day)
-
-/* export async function formatActivityForHomepage(
-  userActivity: TUserActivity[]
-) : Promise<TUserActivityForHomePage[]> {
-  const [{ sessions }] = userActivity
-  const [{ day, kilogram, calories }] = sessions
-  return [{ day, kilogram, calories }]
-}
-
-console.log(formatActivityForHomepage(userActivity)) */

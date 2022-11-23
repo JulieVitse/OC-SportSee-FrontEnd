@@ -1,20 +1,18 @@
 @import 'assets/styles/variables.scss';
 
-.grid{
+.container{
     background: #FBFBFB;
     border-radius: map-get($radius , element);
     padding: 2rem;
     box-sizing: border-box;
+    &__title{
+        font-weight: $font-w-medium;
+    }
+    &__barKilo{
+        fill: $color-secondary;
+    }
+    &__barCalories{
+        fill: $color-primary;
+    }
 }
 
-.activity{
-    font-weight: $font-w-medium;
-}
-
-.barKilo{
-    fill: #282D30;
-}
-
-.barCalories{
-    fill: #e60000;
-}

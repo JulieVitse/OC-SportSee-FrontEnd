@@ -1,3 +1,6 @@
+import { ActivityProps } from 'types/components.types'
+import { CustomTooltip } from 'components/CustomTooltip/CustomTooltip'
+import styles from './ActivityChart.module.scss'
 import {
   ResponsiveContainer,
   BarChart,
@@ -9,21 +12,13 @@ import {
   Legend,
 } from 'recharts'
 
-import { TSessions } from 'types/dataUser.types'
-import styles from './ActivityChart.module.scss'
-
-type ActivityProps = {
-  activityData: TSessions[]
-}
-
 export function ActivityChart({ activityData }: ActivityProps) {
-  const formatDay = (day: string) =>
-    day.toString().indexOf('-') !== -1 ? day.split('-')[2] : day
-
   return (
-    <div className={styles.grid}>
+    <div className={styles.container}>
       <ResponsiveContainer width="100%" height={320}>
-        <BarChart width={500} height={300} data={activityData}>
+        <BarChart
+          data={activityData}
+        >
           <CartesianGrid
             vertical={false}
             strokeDasharray="4 4"
@@ -35,21 +30,26 @@ export function ActivityChart({ activityData }: ActivityProps) {
             tickLine={false}
             stroke="#9B9EAC"
             dy={10}
-            tickFormatter={formatDay}
           />
           <YAxis
             axisLine={false}
             tickLine={false}
             yAxisId="left"
             orientation="right"
-            domain={['dataMin -2', 'dataMax + 2']}
+            tickCount={3}
+            domain={['dataMin -2', 'dataMax +1']}
           />
           <YAxis hide yAxisId="right" />
           <Tooltip
             wrapperStyle={{ outline: 'none' }}
-            cursor={{ fill: 'gray', opacity: 0.1 }}
+            cursor={{ fill: 'gray', opacity: 0.3 }}
+            content={<CustomTooltip active={true} payload={activityData} />}
+            offset={30}
+            allowEscapeViewBox={{ x: true }}
+            position={{ y: 0 }}
           />
-          <text x={0} y={20} className={styles.activity}>
+
+          <text x={5} y={15} className={styles.container__title}>
             Activité quotidienne
           </text>
 
@@ -66,7 +66,7 @@ export function ActivityChart({ activityData }: ActivityProps) {
             barSize={8}
             radius={[10, 10, 0, 0]}
             yAxisId="left"
-            className={styles.barKilo}
+            className={styles.container__barKilo}
             name="Poids (kg)"
           />
           <Bar
@@ -74,7 +74,7 @@ export function ActivityChart({ activityData }: ActivityProps) {
             barSize={8}
             radius={[10, 10, 0, 0]}
             yAxisId="right"
-            className={styles.barCalories}
+            className={styles.container__barCalories}
             name="Calories brûlées (kCal)"
           />
         </BarChart>
