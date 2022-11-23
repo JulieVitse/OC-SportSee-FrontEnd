@@ -3,10 +3,12 @@ import {
   TUserForHomePage,
   TUserActivity,
   TUserActivityForHomePage,
-  //TSessions
+  TUserAverageSessions,
+  TUserAverageSessionsForHomePage,
 } from 'types/apiData.types'
 //import { userActivity } from '_mocks_/store'
 
+// formats user infos to return only the data needed for the homepage
 export async function formatUserForHomepage(
   User: TUserData
 ): Promise<TUserForHomePage> {
@@ -29,6 +31,7 @@ export async function formatUserForHomepage(
   }
 }
 
+//formats user activity to return only the data needed for the homepage
 export async function formatActivityForHomepage(
   userActivity: TUserActivity
 ): Promise<TUserActivityForHomePage[]> {
@@ -44,3 +47,18 @@ export async function formatActivityForHomepage(
 
   return sessions
 }
+
+//formats user activity to return only the data needed for the homepage
+export async function formatAverageSessionForHomepage(
+  userSession: TUserAverageSessions
+): Promise<TUserAverageSessionsForHomePage[]> {
+  const averageSessions = userSession.sessions.map((session) => {
+    const { day, sessionLength } = session
+    // formats day to return the day of the week
+    const numberToDay = day === 1 ? 'L' : day === 2 ? 'M' : day === 3 ? 'M' : day === 4 ? 'J' : day === 5 ? 'V' : day === 6 ? 'S' : 'D'
+    return { day: numberToDay, sessionLength }
+  })
+
+  return averageSessions
+}
+

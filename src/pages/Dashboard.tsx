@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react'
 import styles from './Dashboard.module.scss'
 import { useParams } from 'react-router-dom'
-import { getUserData, getUserActivity } from 'api/userData'
+import { getUserData, getUserActivity, getUserAverageSessions } from 'api/userData'
 import {
   TUserData,
   TUserForHomePage,
   TUserActivityForHomePage,
   TUserActivity,
+  TUserAverageSessions,
+  TUserAverageSessionsForHomePage,
   //TSessions
 } from 'types/apiData.types'
 import {
   formatActivityForHomepage,
+  formatAverageSessionForHomepage,
   formatUserForHomepage,
 } from 'formatters/user_formatter'
-import {ActivityChart} from 'components/ActivityChart/ActivityChart'
+import { ActivityChart } from 'components/ActivityChart/ActivityChart'
+import { AverageSessionsChart } from 'components/AverageSessionsChart/AverageSessionsChart'
 
 //import { getUserData } from '_mocks_/userData'
 
@@ -21,6 +25,8 @@ function Dashboard() {
   const { id } = useParams<string>()
   const [user, setUser] = useState<TUserForHomePage>()
   const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
+  //const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [averageSession, setAverageSession] = useState<TUserAverageSessionsForHomePage[]>()
 
   useEffect(() => {
     const getData = async (id: string) => {
@@ -32,9 +38,11 @@ function Dashboard() {
         //setUser(userData.userInfos)
         const userActivity: TUserActivity = await getUserActivity(id)
         // setActivity(userActivity.sessions)
-        //console.log(userActivity)
         setActivity(await formatActivityForHomepage(userActivity))
-        //console.log(userActivity.sessions)
+
+        const userAverageSession: TUserAverageSessions = await getUserAverageSessions(id)
+        //setAverageSession(userAverageSession.sessions)
+        setAverageSession(await formatAverageSessionForHomepage(userAverageSession))
       } catch (err: any) {
         console.log('Error:', err)
       }
@@ -56,7 +64,13 @@ function Dashboard() {
         </p>
 
         <ActivityChart activityData={activity!} />
+
+        <AverageSessionsChart sessionsData={averageSession!} />
+
       </section>
+
+     
+      
     </main>
   ) : (
     <main className={styles.main}>

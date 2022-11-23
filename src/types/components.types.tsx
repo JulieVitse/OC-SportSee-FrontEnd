@@ -1,4 +1,4 @@
-import { TSessions } from "./apiData.types"
+import { TSessions, TUserAverageSessionsForHomePage } from "./apiData.types"
 
 export type ActivityProps = {
   activityData: TSessions[]
@@ -7,4 +7,8 @@ export type ActivityProps = {
 export type TooltipProps = {
   active: boolean,
   payload: any
+}
+
+export type SessionsProps = {
+    sessionsData: TUserAverageSessionsForHomePage[]
 }

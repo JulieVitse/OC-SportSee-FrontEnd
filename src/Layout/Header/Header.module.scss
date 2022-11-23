@@ -2,13 +2,15 @@
 
 .header {
     height: 91px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: $color-black;
     box-shadow: 0 4px 4px #00000025;
     padding: map-get($margins, small);
-    position: relative;
+    position: fixed;
+    top: 0;
     z-index: 1;
     .logo{
         margin-left: .9rem;
