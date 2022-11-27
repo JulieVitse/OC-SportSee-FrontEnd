@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-//import { TUserData } from 'types/dataUser.types'
-
+// main user data
 export async function getUserData(id: string): Promise<any> {
   try {
     const {
@@ -13,6 +12,7 @@ export async function getUserData(id: string): Promise<any> {
   }
 }
 
+// user activity data
 export async function getUserActivity(id: string): Promise<any> {
   try {
     const {
@@ -24,6 +24,7 @@ export async function getUserActivity(id: string): Promise<any> {
   }
 }
 
+// user average sessions data
 export async function getUserAverageSessions(id: string): Promise<any> {
   try {
     const {
@@ -34,3 +35,16 @@ export async function getUserAverageSessions(id: string): Promise<any> {
     console.log(error)
   }
 }
+
+// user performance data
+export async function getUserPerformance(id: string): Promise<any> {
+  try {
+    const {
+      data: { data },
+    } = await axios.get(`http://localhost:3000/user/${id}/performance`)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+

@@ -1,0 +1,39 @@
+@import 'assets/styles/variables.scss';
+
+.container{
+    margin-top: 2rem;
+    position: relative;
+    background: $color-primary;
+    border-radius: map-get($radius , element);
+    padding: 1rem 0 ;
+    width: calc(100% / 3);
+    &__title{
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        padding: 2rem;
+        color: $color-white;
+        opacity: .6;
+        font-weight: $font-w-medium;
+    }
+}
+
+.tooltip {
+    background: $color-white;
+    padding: .5rem;
+    height: 50px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    //transform: translateY(40%);
+
+    &__content {
+        font-weight: $font-w-medium;
+        color: black;
+        font-size: 14px;
+    }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './Dashboard.module.scss'
 import { useParams } from 'react-router-dom'
-import { getUserData, getUserActivity, getUserAverageSessions } from 'api/userData'
+import { getUserData, getUserActivity, getUserAverageSessions, getUserPerformance } from 'api/userData'
 import {
   TUserData,
   TUserForHomePage,
@@ -9,12 +9,15 @@ import {
   TUserActivity,
   TUserAverageSessions,
   TUserAverageSessionsForHomePage,
+  TUserPerformanceForHomePage,
+  TUserPerformance,
   //TSessions
 } from 'types/apiData.types'
 import {
   formatActivityForHomepage,
   formatAverageSessionForHomepage,
   formatUserForHomepage,
+  formatPerformanceForHomepage
 } from 'formatters/user_formatter'
 import { ActivityChart } from 'components/ActivityChart/ActivityChart'
 import { AverageSessionsChart } from 'components/AverageSessionsChart/AverageSessionsChart'
@@ -27,6 +30,7 @@ function Dashboard() {
   const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
   //const [isLoading, setIsLoading] = useState<boolean>(true)
   const [averageSession, setAverageSession] = useState<TUserAverageSessionsForHomePage[]>()
+  const [performance, setPerformance] = useState<TUserPerformanceForHomePage[]>()
 
   useEffect(() => {
     const getData = async (id: string) => {
@@ -43,6 +47,11 @@ function Dashboard() {
         const userAverageSession: TUserAverageSessions = await getUserAverageSessions(id)
         //setAverageSession(userAverageSession.sessions)
         setAverageSession(await formatAverageSessionForHomepage(userAverageSession))
+
+        const userPerformance: TUserPerformance = await getUserPerformance(id)
+        setPerformance(await formatPerformanceForHomepage(userPerformance))
+
+
       } catch (err: any) {
         console.log('Error:', err)
       }

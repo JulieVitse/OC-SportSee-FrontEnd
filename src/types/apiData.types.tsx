@@ -57,3 +57,29 @@ export type TUserAverageSessionsForHomePage = {
   day: string,
   sessionLength: number
 }
+
+/* ---------------------------- performance data ---------------------------- */
+export type TUserPerformance = {
+  userId: number,
+  kind: TPerformanceData[],
+  data: TPerformanceData[]
+}
+
+/* export type TPerformanceKind = {
+  1 : string,
+  2 : string,
+  3 : string,
+  4 : string,
+  5 : string,
+  6 : string
+} */
+
+export type TPerformanceData = {
+  value: number,
+  kind: string
+}
+
+export type TUserPerformanceForHomePage = {
+  kind: string,
+  value: number
+}
