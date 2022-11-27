@@ -56,6 +56,7 @@ export async function formatAverageSessionForHomepage(
   userSession: TUserAverageSessions
 ): Promise<TUserAverageSessionsForHomePage[]> {
   const averageSessions = userSession.sessions.map((session, index) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { day, sessionLength } = session
     /* const numberToDay = day === 1 ? 'L' : day === 2 ? 'M' : day === 3 ? 'M' : day === 4 ? 'J' : day === 5 ? 'V' : day === 6 ? 'S' : 'D' */
 
@@ -75,6 +76,7 @@ export async function formatPerformanceForHomepage(
   userPerformance: TUserPerformance
 ): Promise<TUserPerformanceForHomePage[]> {
   const perf = userPerformance.data.map((data, index) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { value, kind } = data
     
     const kindFormatted = ['cardio', 'energie', 'endurance', 'force', 'vitesse', 'intensité'][index]

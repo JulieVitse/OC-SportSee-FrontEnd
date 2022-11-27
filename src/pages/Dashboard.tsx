@@ -30,6 +30,7 @@ function Dashboard() {
   const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
   //const [isLoading, setIsLoading] = useState<boolean>(true)
   const [averageSession, setAverageSession] = useState<TUserAverageSessionsForHomePage[]>()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [performance, setPerformance] = useState<TUserPerformanceForHomePage[]>()
 
   useEffect(() => {
