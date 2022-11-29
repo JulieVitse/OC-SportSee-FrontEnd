@@ -11,7 +11,6 @@ import {
   TUserAverageSessionsForHomePage,
   TUserPerformanceForHomePage,
   TUserPerformance,
-  //TSessions
 } from 'types/apiData.types'
 import {
   formatActivityForHomepage,
@@ -23,6 +22,8 @@ import { ActivityChart } from 'components/ActivityChart/ActivityChart'
 import { AverageSessionsChart } from 'components/AverageSessionsChart/AverageSessionsChart'
 
 //import { getUserData } from '_mocks_/userData'
+
+/** @type {number[]} */
 
 function Dashboard() {
   const { id } = useParams<string>()

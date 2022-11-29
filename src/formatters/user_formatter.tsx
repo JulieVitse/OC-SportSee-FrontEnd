@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   TUserData,
   TUserForHomePage,
@@ -8,7 +9,7 @@ import {
   TUserPerformance,
   TUserPerformanceForHomePage,
 } from 'types/apiData.types'
-//import { userActivity } from '_mocks_/store'
+// * import { userActivity } from '_mocks_/store'
 
 // formats user infos to return only the data needed for the homepage
 export async function formatUserForHomepage(
@@ -56,10 +57,7 @@ export async function formatAverageSessionForHomepage(
   userSession: TUserAverageSessions
 ): Promise<TUserAverageSessionsForHomePage[]> {
   const averageSessions = userSession.sessions.map((session, index) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { day, sessionLength } = session
-    /* const numberToDay = day === 1 ? 'L' : day === 2 ? 'M' : day === 3 ? 'M' : day === 4 ? 'J' : day === 5 ? 'V' : day === 6 ? 'S' : 'D' */
-
     // formats day to return the day of the week
     const dayFormatted = ['L', 'M', 'M', 'J', 'V', 'S', 'D'][index]
     //console.log(day, dayFormatted)
@@ -71,24 +69,18 @@ export async function formatAverageSessionForHomepage(
 }
 
 
-//formats user activity to return only the data needed for the homepage
+//formats user performance to return only the data needed for the homepage
 export async function formatPerformanceForHomepage(
   userPerformance: TUserPerformance
 ): Promise<TUserPerformanceForHomePage[]> {
-  const perf = userPerformance.data.map((data, index) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const performance = userPerformance.data.map((data, index) => {
     const { value, kind } = data
-    
+    // formats kinds to translate them
     const kindFormatted = ['cardio', 'energie', 'endurance', 'force', 'vitesse', 'intensité'][index]
     //console.log(kind, kindFormatted)
-
-    // formats day to return the day of the week
-    /* const dayFormatted = ['L', 'M', 'M', 'J', 'V', 'S', 'D'][index]
-    console.log(day, dayFormatted) */
     
     return { value, kind: kindFormatted }
   })
-    console.log(perf)
 
-  return perf
+  return performance
 }
