@@ -3,8 +3,9 @@
 .container{
     background: #FBFBFB;
     border-radius: map-get($radius , element);
-    padding: 2rem;
+    padding: 2rem 0 1rem 1rem;
     box-sizing: border-box;
+    width: 100%;
     &__title{
         font-weight: $font-w-medium;
     }

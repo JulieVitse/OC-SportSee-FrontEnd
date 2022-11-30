@@ -6,7 +6,7 @@ main {
     margin-top: 91px;
     .dashboard {
         width: 100%;
-        padding: 3.25rem 4.5rem;
+        padding: 2.25rem 2.5rem;
         &__title{
             font-size: 3rem;
             margin-bottom: map-get($margins, med);
@@ -16,15 +16,32 @@ main {
         }
         &__subtitle{
             font-size: 18px;
-            margin-bottom: map-get($margins, xxlarge);
+            margin-bottom: map-get($margins, large);
         }
-        &__charts{
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            place-items: baseline;
-            gap: map-get($margins, large);
+        &__container{
+            max-width: 80%;
+            width: 80%;
+            &__charts {
+                    max-width: 100%;
+                    /* display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        align-items: stretch; */
+                    margin-top: map-get($margins, large);
+                    //min-height: 290px;
+                    //gap: .5rem;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+                    place-items: baseline;
+                    gap: map-get($margins, med);
+            
+                    @include screen-sm {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+                }
         }
+        
     }
     .error {
         width: 100%;

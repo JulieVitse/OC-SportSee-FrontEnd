@@ -1,0 +1,48 @@
+@import 'assets/styles/variables.scss';
+
+.container {
+  width: 100%;
+  height: 100%;
+  background: #fbfbfb;
+  border-radius: map-get($radius, element);
+  padding: 1rem 0;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  @include screen-sm {
+    grid-column: span 1;
+  }
+  //padding-bottom: 35%;
+  /* @include screen-sm{
+        width: 30%;    
+    } */
+  &__title {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding: 1.5rem;
+    font-weight: $font-w-medium;
+    font-size: 14px;
+  }
+  &__text {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: $font-w-bold;
+    text-align: center;
+    font-size: 26px;
+    &__span {
+      color: #74798c;
+      font-size: 16px;
+      font-weight: $font-w-medium;
+      display: inline-flex;
+      line-height: 1.4;
+    }
+  }
+  &__bar {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.03));
+  }
+}

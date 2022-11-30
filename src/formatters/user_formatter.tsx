@@ -23,14 +23,15 @@ export async function formatUserForHomepage(
   } = User
   /*  const todayScore = score * 10
   return {todayScore, ...User} */
+  const scoreFormatted = score ? score * 100 : todayScore * 100
   return {
     calorieCount,
     proteinCount,
     carbohydrateCount,
     lipidCount,
     firstName,
-    score,
-    todayScore
+    score: scoreFormatted,
+    todayScore: scoreFormatted
   }
 }
 

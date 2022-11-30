@@ -15,6 +15,7 @@ import {
 export function ActivityChart({ activityData }: ActivityProps) {
   return (
     <div className={styles.container}>
+      {activityData && (
       <ResponsiveContainer width="100%" height={320}>
         <BarChart
           data={activityData}
@@ -79,6 +80,7 @@ export function ActivityChart({ activityData }: ActivityProps) {
           />
         </BarChart>
       </ResponsiveContainer>
+      )}
     </div>
   )
 }

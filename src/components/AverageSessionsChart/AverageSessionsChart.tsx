@@ -19,13 +19,13 @@ export function AverageSessionsChart({ sessionsData }: SessionsProps) {
         sessions
       </h3>
       {sessionsData && (
-        <ResponsiveContainer width="100%" height={290}>
+        <ResponsiveContainer width="100%" height={200} className={styles.responsiveContainer}>
           <LineChart
             width={500}
-            height={290}
+            //height={260}
             data={sessionsData}
-            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-            className={styles.container__chart}
+            margin={{ top: 32, right: 0, bottom: 0, left: 0 }}
+            className={styles.responsiveContainer__chart}
           >
             <XAxis
               dataKey="day"

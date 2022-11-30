@@ -29,3 +29,9 @@ $breakpoints: (
     desktop-med: 1280px,
     desktop-large: 1600px
 );
+
+@mixin screen-sm {
+    @media screen and (min-width:1024px) and (max-width: 1280px) {
+        @content;
+    }
+}

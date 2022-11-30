@@ -21,6 +21,7 @@ import {
 import { ActivityChart } from 'components/ActivityChart/ActivityChart'
 import { AverageSessionsChart } from 'components/AverageSessionsChart/AverageSessionsChart'
 import { PerformanceChart } from 'components/PerformanceChart/PerformanceChart'
+import { ScoreChart } from 'components/ScoreChart/ScoreChart'
 
 //import { getUserData } from '_mocks_/userData'
 
@@ -33,12 +34,15 @@ function Dashboard() {
   //const [isLoading, setIsLoading] = useState<boolean>(true)
   const [averageSession, setAverageSession] = useState<TUserAverageSessionsForHomePage[]>()
   const [performance, setPerformance] = useState<TUserPerformanceForHomePage[]>()
+  const [score, setScore] = useState<number>()
 
   useEffect(() => {
     const getData = async (id: string) => {
       try {
         const userData: TUserData = await getUserData(id)
         setUser(await formatUserForHomepage(userData))
+
+        setScore(user?.score ? user?.score : user?.todayScore)
         
         /* const {calorieCount, proteinCount} = await formatUserForHomepage(userData)
         setUserFirstName(firstName) */
@@ -56,8 +60,7 @@ function Dashboard() {
       }
     }
     getData(id!)
-  }, [id])
-  
+  }, [id, user?.score, user?.todayScore])
   
   return user ? (
     <main className={styles.main}>
@@ -72,14 +75,15 @@ function Dashboard() {
           Félicitations ! Vous avez explosé vos objectifs hier 👏
         </p>
 
-        
+        <div className={styles.dashboard__container}>
 
-        <ActivityChart activityData={activity!} />
+          <ActivityChart activityData={activity!} />
 
-        <div className={styles.dashboard__charts}>
-          <AverageSessionsChart sessionsData={averageSession!} />
-          <PerformanceChart performanceData={performance!} />
-          
+          <div className={styles.dashboard__container__charts}>
+            <AverageSessionsChart sessionsData={averageSession!} />
+            <PerformanceChart performanceData={performance!} />
+            <ScoreChart score={score!} />
+          </div>
         </div>
       </section>
     </main>

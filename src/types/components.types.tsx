@@ -1,7 +1,8 @@
 import {
   TPerformanceData,
   TSessions,
-  TUserAverageSessionsForHomePage
+  TUserAverageSessionsForHomePage,
+  //TUserData
 } from './apiData.types'
 
 export type ActivityProps = {
@@ -19,4 +20,8 @@ export type SessionsProps = {
 
 export type PerformanceProps = {
   performanceData: TPerformanceData[]
+}
+
+export type ScoreProps = {
+  score: number
 }
