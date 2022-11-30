@@ -1,0 +1,21 @@
+@import 'assets/styles/variables.scss';
+
+.tooltip {
+    background: $color-white;
+    padding: .5rem;
+    height: 50px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    //transform: translateY(40%);
+
+    &__content {
+        font-weight: $font-w-medium;
+        color: black;
+        font-size: 14px;
+    }
+}

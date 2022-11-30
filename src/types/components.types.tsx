@@ -1,8 +1,7 @@
 import {
   TPerformanceData,
   TSessions,
-  TUserAverageSessionsForHomePage,
-  TUserPerformanceForHomePage,
+  TUserAverageSessionsForHomePage
 } from './apiData.types'
 
 export type ActivityProps = {
