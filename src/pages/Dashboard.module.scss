@@ -6,7 +6,7 @@ main {
     margin-top: 91px;
     .dashboard {
         width: 100%;
-        padding: 3.25rem 6.5rem;
+        padding: 3.25rem 4.5rem;
         &__title{
             font-size: 3rem;
             margin-bottom: map-get($margins, med);
@@ -17,6 +17,13 @@ main {
         &__subtitle{
             font-size: 18px;
             margin-bottom: map-get($margins, xxlarge);
+        }
+        &__charts{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-items: baseline;
+            gap: map-get($margins, large);
         }
     }
     .error {

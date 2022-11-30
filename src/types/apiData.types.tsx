@@ -65,21 +65,12 @@ export type TUserPerformance = {
   data: TPerformanceData[]
 }
 
-/* export type TPerformanceKind = {
-  1 : string,
-  2 : string,
-  3 : string,
-  4 : string,
-  5 : string,
-  6 : string
-} */
-
 export type TPerformanceData = {
   value: number,
   kind: string
 }
-
+// formatter
 export type TUserPerformanceForHomePage = {
-  kind: string,
-  value: number
+  value: number,
+  kind: string
 }

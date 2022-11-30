@@ -20,6 +20,7 @@ import {
 } from 'formatters/user_formatter'
 import { ActivityChart } from 'components/ActivityChart/ActivityChart'
 import { AverageSessionsChart } from 'components/AverageSessionsChart/AverageSessionsChart'
+import { PerformanceChart } from 'components/PerformanceChart/PerformanceChart'
 
 //import { getUserData } from '_mocks_/userData'
 
@@ -31,7 +32,6 @@ function Dashboard() {
   const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
   //const [isLoading, setIsLoading] = useState<boolean>(true)
   const [averageSession, setAverageSession] = useState<TUserAverageSessionsForHomePage[]>()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [performance, setPerformance] = useState<TUserPerformanceForHomePage[]>()
 
   useEffect(() => {
@@ -39,20 +39,17 @@ function Dashboard() {
       try {
         const userData: TUserData = await getUserData(id)
         setUser(await formatUserForHomepage(userData))
+        
         /* const {calorieCount, proteinCount} = await formatUserForHomepage(userData)
         setUserFirstName(firstName) */
-        //setUser(userData.userInfos)
         const userActivity: TUserActivity = await getUserActivity(id)
-        // setActivity(userActivity.sessions)
         setActivity(await formatActivityForHomepage(userActivity))
 
         const userAverageSession: TUserAverageSessions = await getUserAverageSessions(id)
-        //setAverageSession(userAverageSession.sessions)
         setAverageSession(await formatAverageSessionForHomepage(userAverageSession))
 
         const userPerformance: TUserPerformance = await getUserPerformance(id)
         setPerformance(await formatPerformanceForHomepage(userPerformance))
-
 
       } catch (err: any) {
         console.log('Error:', err)
@@ -60,7 +57,8 @@ function Dashboard() {
     }
     getData(id!)
   }, [id])
- 
+  
+  
   return user ? (
     <main className={styles.main}>
       <section className={styles.dashboard}>
@@ -74,14 +72,16 @@ function Dashboard() {
           Félicitations ! Vous avez explosé vos objectifs hier 👏
         </p>
 
+        
+
         <ActivityChart activityData={activity!} />
 
-        <AverageSessionsChart sessionsData={averageSession!} />
-
+        <div className={styles.dashboard__charts}>
+          <AverageSessionsChart sessionsData={averageSession!} />
+          <PerformanceChart performanceData={performance!} />
+          
+        </div>
       </section>
-
-     
-      
     </main>
   ) : (
     <main className={styles.main}>

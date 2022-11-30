@@ -30,7 +30,7 @@ export async function formatUserForHomepage(
     lipidCount,
     firstName,
     score,
-    todayScore,
+    todayScore
   }
 }
 
@@ -76,7 +76,7 @@ export async function formatPerformanceForHomepage(
   const performance = userPerformance.data.map((data, index) => {
     const { value, kind } = data
     // formats kinds to translate them
-    const kindFormatted = ['cardio', 'energie', 'endurance', 'force', 'vitesse', 'intensité'][index]
+    const kindFormatted = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité'][index]
     //console.log(kind, kindFormatted)
     
     return { value, kind: kindFormatted }

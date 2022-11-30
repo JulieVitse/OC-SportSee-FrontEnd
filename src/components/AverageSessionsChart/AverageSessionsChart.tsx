@@ -8,21 +8,7 @@ import {
 } from 'recharts'
 import { SessionsProps } from 'types/components.types'
 import styles from './AverageSessionsChart.module.scss'
-import { TooltipProps } from 'types/components.types'
-
-export const SessionsTooltip = ({ active, payload }: TooltipProps) => {
-  //console.log(payload[0])
-  if (active && payload && payload.length > 0) {
-    return (
-      <div className={styles.tooltip}>
-        <p
-          className={styles.tooltip__content}
-        >{`${payload[0].value}${payload[0].unit}`}</p>
-      </div>
-    )
-  }
-  return null
-}
+import { SessionsTooltip } from 'components/SessionsTooltip/SessionsTooltip'
 
 export function AverageSessionsChart({ sessionsData }: SessionsProps) {
   return (
