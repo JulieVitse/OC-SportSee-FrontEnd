@@ -1,3 +1,4 @@
+/** recharts dependencies */
 import {
   LineChart,
   Line,
@@ -6,11 +7,22 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
+/** prop types */
 import { SessionsProps } from 'types/components.types'
+/** styles */
 import styles from './AverageSessionsChart.module.scss'
+/** components */
 import { SessionsTooltip } from 'components/SessionsTooltip/SessionsTooltip'
 
-export function AverageSessionsChart({ sessionsData }: SessionsProps) {
+/**
+ * Component displaying the average sessions chart of the user
+ * @component
+ * @param {SessionsProps} props - types of the props
+ * @param {TUserAverageSessionsForHomePage[]} props.sessionsData - The sessions data of the user
+ * @returns {JSX.Element} The average sessions chart
+ */
+
+export function AverageSessionsChart({ sessionsData }: SessionsProps): JSX.Element {
   return (
     <div className={styles.container}>
       <h3 className={styles.container__title}>
@@ -22,7 +34,6 @@ export function AverageSessionsChart({ sessionsData }: SessionsProps) {
         <ResponsiveContainer width="100%" height={200} className={styles.responsiveContainer}>
           <LineChart
             width={500}
-            //height={260}
             data={sessionsData}
             margin={{ top: 32, right: 0, bottom: 0, left: 0 }}
             className={styles.responsiveContainer__chart}

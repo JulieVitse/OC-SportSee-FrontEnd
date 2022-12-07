@@ -1,28 +1,27 @@
+/** recharts dependencies */
 import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
   Radar,
   ResponsiveContainer,
-  Text
+  //Text
 } from 'recharts'
+/** prop types */
 import { PerformanceProps } from 'types/components.types'
+/** styles */
 import styles from './PerformanceChart.module.scss'
+/** helpers */
+import { renderPolarAngleAxis } from 'Helpers/polarAngleAxis'
 
-export function renderPolarAngleAxis({ payload, x, y, cx, cy, ...rest }: any) {
-  return (
-    <Text
-      {...rest}
-      verticalAnchor="middle"
-      y={y + (y - cy) / 12}
-      x= {x + (x - cx) / 30}
-    >
-      {payload.value}
-    </Text>
-  )
-}
-
-export function PerformanceChart({ performanceData }: PerformanceProps) {
+/**
+ * Component displaying the performance chart of the user
+ * @component
+ * @param {PerformanceProps} props - types of the props
+ * @param {TPerformanceData[]} props.performanceData - The performance data of the user
+ * @returns {JSX.Element} The performance chart
+ */
+export function PerformanceChart({ performanceData }: PerformanceProps): JSX.Element {
   return (
     <div className={styles.container}>
       {performanceData && (

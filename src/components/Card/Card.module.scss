@@ -1,0 +1,40 @@
+@import 'assets/styles/variables.scss';
+
+.card{
+    width: 100%;
+    background: #FBFBFB;
+    padding: map-get($margins, large);
+    border-radius: map-get($radius, element);
+    display: flex;
+    align-items: center;
+    gap: map-get($margins, med);
+    &__text{
+        line-height: 1.5;
+        &__value{
+            font-weight: $font-w-bold;
+            font-size: 20px;
+        }
+        &__title{
+            color: #74798C;
+            font-weight: $font-w-medium;
+            font-size: 14px;
+        }
+    }
+    &__image{
+        //background: black;
+        padding: 1.25rem;
+        border-radius: map-get($radius, icon);
+        &--red{
+            background: rgba(255, 0, 0, .1);
+        }
+        &--blue{
+            background: rgba(74, 184, 255, 0.1)
+        }
+        &--yellow{
+            background: rgba(249, 206, 35, .1)
+        }
+        &--pink{
+            background: rgba(253, 81, 129, 0.1)
+        }
+    }
+}

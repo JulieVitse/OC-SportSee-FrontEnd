@@ -19,10 +19,6 @@ export type TKeyData = {
 }
 // formatter
 export type TUserForHomePage = {
-  calorieCount: number
-  proteinCount: number
-  carbohydrateCount: number
-  lipidCount: number
   firstName: string
   score: number
   todayScore: number
@@ -73,4 +69,13 @@ export type TPerformanceData = {
 export type TUserPerformanceForHomePage = {
   value: number,
   kind: string
+}
+
+//keyData formatter
+export type TKeyDataForHomePage = {
+  value: number,
+  name: string,
+  unit: string,
+  image: string,
+  color: string
 }

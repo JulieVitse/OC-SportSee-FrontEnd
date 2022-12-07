@@ -1,6 +1,10 @@
+/** prop types */
 import { ActivityProps } from 'types/components.types'
+/** components */
 import { CustomTooltip } from 'components/CustomTooltip/CustomTooltip'
+/** styles */
 import styles from './ActivityChart.module.scss'
+/** recharts dependencies */
 import {
   ResponsiveContainer,
   BarChart,
@@ -12,11 +16,19 @@ import {
   Legend,
 } from 'recharts'
 
-export function ActivityChart({ activityData }: ActivityProps) {
+/**
+ * Component displaying the activity chart of the user
+ * @component
+ * @param {ActivityProps} props - types of the props
+ * @param {TSessions[]} props.activityData - The activity data of the user
+ * @returns {JSX.Element} The activity chart
+ */
+
+export function ActivityChart({ activityData }: ActivityProps): JSX.Element {
   return (
     <div className={styles.container}>
       {activityData && (
-      <ResponsiveContainer width="100%" height={320}>
+      <ResponsiveContainer width="100%" height={280}>
         <BarChart
           data={activityData}
         >

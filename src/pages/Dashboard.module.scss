@@ -1,60 +1,61 @@
 @import 'assets/styles/variables.scss';
 
 main {
-    width: calc(100% - 117px);
-    margin-left: auto;
-    margin-top: 91px;
-    .dashboard {
-        width: 100%;
-        padding: 2.25rem 2.5rem;
-        &__title{
-            font-size: 3rem;
-            margin-bottom: map-get($margins, med);
-            &__username{
-                color: $color-primary
-            }
-        }
-        &__subtitle{
-            font-size: 18px;
-            margin-bottom: map-get($margins, large);
-        }
-        &__container{
-            max-width: 80%;
-            width: 80%;
-            &__charts {
-                    max-width: 100%;
-                    /* display: flex;
-                        flex-direction: row;
-                        flex-wrap: nowrap;
-                        justify-content: space-between;
-                        align-items: stretch; */
-                    margin-top: map-get($margins, large);
-                    //min-height: 290px;
-                    //gap: .5rem;
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-                    place-items: baseline;
-                    gap: map-get($margins, med);
-            
-                    @include screen-sm {
-                        grid-template-columns: repeat(2, minmax(0, 1fr));
-                    }
-                }
-        }
-        
+  width: calc(100% - 117px);
+  margin-left: auto;
+  margin-top: 91px;
+  .dashboard {
+    width: 100%;
+    padding: 2.25rem 2.5rem;
+    &__title {
+      font-size: 3rem;
+      margin-bottom: map-get($margins, med);
+      &__username {
+        color: $color-primary;
+      }
     }
-    .error {
-        width: 100%;
-        padding-top: 6.5rem;
-        &__title{
-            text-align: center;
-            font-size: 5rem;
-            font-weight: $font-w-bold;
-            color: red;
-        }
-        &__message{
-            text-align: center;
-        }
+    &__subtitle {
+      font-size: 18px;
+      margin-bottom: map-get($margins, large);
     }
+    &__container {
+      display: flex;
+      gap: 2rem;
+      &__left {
+        max-width: 75%;
+        width: 75%;
+      }
+      &__right {
+        width: 23%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      &__charts {
+        max-width: 100%;
+        margin-top: map-get($margins, large);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        place-items: baseline;
+        gap: map-get($margins, med);
+        @include screen-sm {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+  .error {
+    width: 100%;
+    padding-top: 6.5rem;
+    &__title {
+      text-align: center;
+      font-size: 5rem;
+      font-weight: $font-w-bold;
+      color: red;
+    }
+    &__message {
+      text-align: center;
+    }
+  }
 }
-

@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-// main user data
+/**
+ * Get user data from API
+ * @async
+ * @param {string} id - user id
+ * @returns {Promise<object>} A promise that contains an object with the user's data when resolved
+ */
 export async function getUserData(id: string): Promise<any> {
   try {
     const {
@@ -12,7 +17,10 @@ export async function getUserData(id: string): Promise<any> {
   }
 }
 
-// user activity data
+/** Get user activity data from API
+ * @param {string} id - user id
+ * @returns {Promise<object>} A promise that contains an object with the user's activity data when resolved
+ */
 export async function getUserActivity(id: string): Promise<any> {
   try {
     const {
@@ -24,7 +32,10 @@ export async function getUserActivity(id: string): Promise<any> {
   }
 }
 
-// user average sessions data
+/** Get user average sessions data from API
+ * @param {string} id - user id
+ * @returns {Promise<object>} A promise that contains an object with the user's average sessions data when resolved
+ */
 export async function getUserAverageSessions(id: string): Promise<any> {
   try {
     const {
@@ -36,7 +47,10 @@ export async function getUserAverageSessions(id: string): Promise<any> {
   }
 }
 
-// user performance data
+/** Get user performance data from API
+ * @param {string} id - user id
+ * @returns {Promise<object>} A promise that contains an object with the user's performance data when resolved
+ */
 export async function getUserPerformance(id: string): Promise<any> {
   try {
     const {
@@ -47,4 +61,3 @@ export async function getUserPerformance(id: string): Promise<any> {
     console.log(error)
   }
 }
-

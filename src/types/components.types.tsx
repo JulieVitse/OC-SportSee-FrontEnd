@@ -1,8 +1,8 @@
+/** types for component props */
 import {
   TPerformanceData,
   TSessions,
   TUserAverageSessionsForHomePage,
-  //TUserData
 } from './apiData.types'
 
 export type ActivityProps = {
@@ -24,4 +24,12 @@ export type PerformanceProps = {
 
 export type ScoreProps = {
   score: number
+}
+
+export type CardProps = {
+  name: string
+  value: number
+  unit: string
+  image: string
+  color: string
 }

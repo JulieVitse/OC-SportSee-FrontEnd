@@ -1,27 +1,33 @@
-import {
-  ResponsiveContainer,
-  RadialBarChart,
-  RadialBar
-} from 'recharts'
+/** recharts dependencies */
+import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
+/** prop types */
 import { ScoreProps } from 'types/components.types'
+/** styles */
 import styles from './ScoreChart.module.scss'
 
-export function ScoreChart({ score }: ScoreProps) {
+/**
+ * Component displaying the score chart of the user
+ * @component
+ * @param {ScoreProps} props - types of the props
+ * @param {number} props.score - The score of the user
+ * @returns {JSX.Element} The score chart
+ */
+
+export function ScoreChart({ score }: ScoreProps): JSX.Element {
+  // creates data for the chart
   const data = [
     {
-      score: 100,
-      fill: 'white'
+      score: 100, // max score
+      fill: 'white', // background color
     },
     {
-      score: score,
-      fill: '#E60000'
-    }
+      score: score, // current user score
+      fill: '#E60000', // current score color 
+    },
   ]
   return (
     <div className={styles.container}>
-      <h3 className={styles.container__title}>
-        Score
-      </h3>
+      <h3 className={styles.container__title}>Score</h3>
       <h4 className={styles.container__text}>
         {score}% <br />
         <span className={styles.container__text__span}>
