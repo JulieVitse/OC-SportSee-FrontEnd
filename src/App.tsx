@@ -1,7 +1,7 @@
 import React from "react"
 import './App.scss';
 import Layout from 'Layout/Layout'
-import Dashboard from 'pages/Dashboard'
+import Dashboard from 'pages/Dashboard/Dashboard'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 function App() {

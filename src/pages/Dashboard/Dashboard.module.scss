@@ -45,17 +45,4 @@ main {
       }
     }
   }
-  .error {
-    width: 100%;
-    padding-top: 6.5rem;
-    &__title {
-      text-align: center;
-      font-size: 5rem;
-      font-weight: $font-w-bold;
-      color: red;
-    }
-    &__message {
-      text-align: center;
-    }
-  }
 }

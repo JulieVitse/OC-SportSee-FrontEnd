@@ -34,9 +34,9 @@ import { AverageSessionsChart } from 'components/AverageSessionsChart/AverageSes
 import { PerformanceChart } from 'components/PerformanceChart/PerformanceChart'
 import { ScoreChart } from 'components/ScoreChart/ScoreChart'
 import { Card } from 'components/Card/Card'
+import { Error } from 'pages/Error/Error'
 /** mock data */
-
-//import { getUserData } from '_mocks_/userData'
+//import { getUserData, getUserActivity, getUserAverageSessions, getUserPerformance } from '_mocks_/userData'
 
 /**
  * Component for rendering the dashboard page
@@ -47,6 +47,7 @@ import { Card } from 'components/Card/Card'
 function Dashboard(): JSX.Element {
   /* gets id from url */
   const { id } = useParams<string>()
+  console.log(id)
   /* component states */
   const [user, setUser] = useState<TUserForHomePage>()
   const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
@@ -85,56 +86,50 @@ function Dashboard(): JSX.Element {
   }, [id, user?.score, user?.todayScore])
 
   /* renders the dashboard page if user id exists */
-  return user ? (
-    <main className={styles.main}>
-      <section className={styles.dashboard}>
-        <h1 className={styles.dashboard__title}>
-          Bonjour{' '}
-          <span className={styles.dashboard__title__username}>
-            {user?.firstName}
-          </span>
-        </h1>
-        <p className={styles.dashboard__subtitle}>
-          Félicitations ! Vous avez explosé vos objectifs hier 👏
-        </p>
+  //if (id === '15') { // condition to test mock data
+  if (user) {
+    return (
+      <main className={styles.main}>
+        <section className={styles.dashboard}>
+          <h1 className={styles.dashboard__title}>
+            Bonjour{' '}
+            <span className={styles.dashboard__title__username}>
+              {user?.firstName}
+            </span>
+          </h1>
+          <p className={styles.dashboard__subtitle}>
+            Félicitations ! Vous avez explosé vos objectifs hier 👏
+          </p>
 
-        <div className={styles.dashboard__container}>
-          <div className={styles.dashboard__container__left}>
-            <ActivityChart activityData={activity!} />
+          <div className={styles.dashboard__container}>
+            <div className={styles.dashboard__container__left}>
+              <ActivityChart activityData={activity!} />
 
-            <div className={styles.dashboard__container__charts}>
-              <AverageSessionsChart sessionsData={averageSession!} />
-              <PerformanceChart performanceData={performance!} />
-              <ScoreChart score={score!} />
+              <div className={styles.dashboard__container__charts}>
+                <AverageSessionsChart sessionsData={averageSession!} />
+                <PerformanceChart performanceData={performance!} />
+                <ScoreChart score={score!} />
+              </div>
             </div>
-          </div>
 
-          <aside className={styles.dashboard__container__right}>
-            {keyData?.map((info, index) => (
-              <Card
-                name={info.name}
-                value={info.value}
-                unit={info.unit}
-                image={info.image}
-                color={info.color}
-                key={`${info.name} + ${index}`}
-              />
-            ))}
-          </aside>
-        </div>
-      </section>
-    </main>
-  ) : (
+            <aside className={styles.dashboard__container__right}>
+              {keyData?.map((info, index) => (
+                <Card
+                  name={info.name}
+                  value={info.value}
+                  unit={info.unit}
+                  image={info.image}
+                  color={info.color}
+                  key={`${info.name} + ${index}`}
+                />
+              ))}
+            </aside>
+          </div>
+        </section>
+      </main>
+    )
     /* renders error page if user id does not exist */
-    <main className={styles.main}>
-      <div className={styles.error}>
-        <h1 className={styles.error__title}>{'Oops!'.toUpperCase()}</h1>
-        <h2 className={styles.error__message}>
-          The specified user does not exist.
-        </h2>
-      </div>
-    </main>
-  )
+  } else return <Error />
 }
 
 export default Dashboard
