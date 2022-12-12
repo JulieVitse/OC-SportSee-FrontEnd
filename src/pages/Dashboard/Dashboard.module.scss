@@ -31,6 +31,10 @@ main {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        @include screen-sm {
+          justify-content: flex-start;
+          gap: 2.1rem;
+        }
       }
       &__charts {
         max-width: 100%;

@@ -12,7 +12,7 @@ import { PerformanceProps } from 'types/components.types'
 /** styles */
 import styles from './PerformanceChart.module.scss'
 /** helpers */
-import { renderPolarAngleAxis } from 'Helpers/polarAngleAxis'
+import { renderPolarAngleAxis } from 'helpers/polarAngleAxis'
 
 /**
  * Component displaying the performance chart of the user

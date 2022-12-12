@@ -47,7 +47,6 @@ import { Error } from 'pages/Error/Error'
 function Dashboard(): JSX.Element {
   /* gets id from url */
   const { id } = useParams<string>()
-  console.log(id)
   /* component states */
   const [user, setUser] = useState<TUserForHomePage>()
   const [activity, setActivity] = useState<TUserActivityForHomePage[]>()
