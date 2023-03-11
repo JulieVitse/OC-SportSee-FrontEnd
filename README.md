@@ -1,15 +1,31 @@
-# Getting Started with Create React App
+# SportSee
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white">
+
+## 1. Project
+Openclassrooms Project 12 : Develop an analytics dashboard using React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### 1.1 Pre-requisites
+- [NodeJS](https://nodejs.org/en/) version 18.12
+- [Yarn](https://yarnpkg.com/)
+
+If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
+
+### 1.2 Launching the project
+- Install the backend : Follow the instruction from [this repo containing the backend](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
+- Fork this repository
+- Clone it on your computer
+- Run `yarn` or `npm install` to install the dependencies
+
+## 2. Available Scripts
 
 In the project directory, you can run:
 
 ### `yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The backend will be running on [http://localhost:3000](http://localhost:3000), say yes when prompted to open the app on the next available url to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -38,9 +54,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
