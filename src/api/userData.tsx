@@ -18,6 +18,7 @@ export async function getUserData(id: string): Promise<any> {
 }
 
 /** Get user activity data from API
+ * @async
  * @param {string} id - user id
  * @returns {Promise<object>} A promise that contains an object with the user's activity data when resolved
  */
@@ -33,6 +34,7 @@ export async function getUserActivity(id: string): Promise<any> {
 }
 
 /** Get user average sessions data from API
+ * @async
  * @param {string} id - user id
  * @returns {Promise<object>} A promise that contains an object with the user's average sessions data when resolved
  */
@@ -48,6 +50,7 @@ export async function getUserAverageSessions(id: string): Promise<any> {
 }
 
 /** Get user performance data from API
+ * @async
  * @param {string} id - user id
  * @returns {Promise<object>} A promise that contains an object with the user's performance data when resolved
  */

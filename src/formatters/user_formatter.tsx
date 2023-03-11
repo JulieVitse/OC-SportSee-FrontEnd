@@ -99,11 +99,11 @@ export async function formatKeyDataForHomepage(userKeyData: TUserData): Promise<
 }
 
 /**
- * Formats user performance to return only the data needed for the homepage
+ * Formats user activity to return only the data needed for the homepage
  * @async
  * @function
- * @param {TUserPerformance} userPerformance - The user performance data
- * @returns {TUserPerformanceForHomePage[]} The user performance data formatted for the homepage
+ * @param {TUserActivity} userActivity - The user activity data
+ * @returns {TUserActivityForHomePage[]} The user performance data formatted for the homepage
  */
 export async function formatActivityForHomepage(
   userActivity: TUserActivity
